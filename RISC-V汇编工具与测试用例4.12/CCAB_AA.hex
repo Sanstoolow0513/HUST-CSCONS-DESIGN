@@ -1,0 +1,294 @@
+Address     Code        Basic                        Line Source
+
+0x00003000  0x00100493  addi x9,x0,1                 5     addi s1,zero, 1   #����jal,jalrrָ��
+0x00003004  0x0100006f  jal x0,0x00000010            6     j jmp_next1       #jal x0,8
+0x00003008  0x00100493  addi x9,x0,1                 7     addi s1,zero, 1
+0x0000300c  0x00200913  addi x18,x0,2                8     addi s2,zero, 2
+0x00003010  0x00300993  addi x19,x0,3                9     addi s3,zero, 3
+0x00003014  0x0100006f  jal x0,0x00000010            11    j jmp_next2
+0x00003018  0x00100493  addi x9,x0,1                 12    addi s1,zero, 1
+0x0000301c  0x00200913  addi x18,x0,2                13    addi s2,zero, 2
+0x00003020  0x00300993  addi x19,x0,3                14    addi s3,zero, 3
+0x00003024  0x0100006f  jal x0,0x00000010            16    j jmp_next3
+0x00003028  0x00100493  addi x9,x0,1                 17    addi s1,zero, 1
+0x0000302c  0x00200913  addi x18,x0,2                18    addi s2,zero, 2
+0x00003030  0x00300993  addi x19,x0,3                19    addi s3,zero, 3
+0x00003034  0x0100006f  jal x0,0x00000010            21    j jmp_next4
+0x00003038  0x00100493  addi x9,x0,1                 22    addi s1,zero, 1
+0x0000303c  0x00200913  addi x18,x0,2                23    addi s2,zero, 2
+0x00003040  0x00300993  addi x19,x0,3                24    addi s3,zero, 3
+0x00003044  0x3c0000ef  jal x1,0x000003c0            25   jmp_next4:jal jmp_count
+0x00003048  0x00100413  addi x8,x0,1                 30   addi s0,zero,1     #����λ��ѭ�����ԣ�0��������ʾ���ǳ�ʼֵ1����1λ�ظ�15�ε�ֵ��1���������ۼ�ֵ
+0x0000304c  0x00100493  addi x9,x0,1                 31   addi s1,zero,1  
+0x00003050  0x01f49493  slli x9,x9,31                32   slli s1, s1, 31   #�߼�����31λ s1=0x80000000
+0x00003054  0x00900533  add x10,x0,x9                41   add    a0,zero,s1       #display s1
+0x00003058  0x02200893  addi x17,x0,0x00000022       42   addi   a7,zero,34        # display hex
+0x0000305c  0x00000073  ecall                        43   ecall                 # we are out of here.  
+0x00003060  0x0024d493  srli x9,x9,2                 45   srli s1, s1, 2   
+0x00003064  0x00048463  beq x9,x0,0x00000008         46   beq s1, zero, shift_next1
+0x00003068  0xfedff06f  jal x0,0xffffffec            47   j LogicalRightShift
+0x0000306c  0x00900533  add x10,x0,x9                51   add    a0,zero,s1       #display s1
+0x00003070  0x02200893  addi x17,x0,0x00000022       52   addi   a7,zero,34         # display hex
+0x00003074  0x00000073  ecall                        53   ecall                 # we are out of here.  
+0x00003078  0x00100493  addi x9,x0,1                 61   addi s1,zero, 1   
+0x0000307c  0x00249493  slli x9,x9,2                 63   slli s1, s1, 2  
+0x00003080  0x00900533  add x10,x0,x9                65   add    a0,zero,s1       #display s1
+0x00003084  0x02200893  addi x17,x0,0x00000022       66   addi   a7,zero,34         # display hex
+0x00003088  0x00000073  ecall                        67   ecall                 # we are out of here.  
+0x0000308c  0x00048463  beq x9,x0,0x00000008         69   beq s1, zero, ArithRightShift
+0x00003090  0xfedff06f  jal x0,0xffffffec            70   j LogicalLeftShift
+0x00003094  0x00100493  addi x9,x0,1                 79   addi s1,zero,1  
+0x00003098  0x01f49493  slli x9,x9,31                80   slli s1, s1, 31   #�߼�����31λ s1=0x80000000
+0x0000309c  0x00900533  add x10,x0,x9                82   add    a0,zero,s1       #display s1
+0x000030a0  0x02200893  addi x17,x0,0x00000022       83   addi   a7,zero,34         # display hex
+0x000030a4  0x00000073  ecall                        84   ecall                 # we are out of here.  
+0x000030a8  0x4034d493  srai x9,x9,3                 86   srai s1, s1, 3    #s1=0X80000000-->0XF0000000
+0x000030ac  0x00900533  add x10,x0,x9                88   add    a0,zero,s1       #display s1
+0x000030b0  0x02200893  addi x17,x0,0x00000022       89   addi   a7,zero,34         # display hex
+0x000030b4  0x00000073  ecall                        90   ecall                 # we are out of here.  
+0x000030b8  0x4044d493  srai x9,x9,4                 93   srai s1, s1, 4    #0XF0000000-->0XFF000000
+0x000030bc  0x00900533  add x10,x0,x9                95   add    a0,zero,s1       #display s1
+0x000030c0  0x02200893  addi x17,x0,0x00000022       96   addi   a7,zero,34         # display hex
+0x000030c4  0x00000073  ecall                        97   ecall                 # we are out of here.  
+0x000030c8  0x4044d493  srai x9,x9,4                 100  srai s1, s1, 4    #0XFF000000-->0XFFF00000
+0x000030cc  0x00900533  add x10,x0,x9                102  add    a0,zero,s1       #display s1
+0x000030d0  0x02200893  addi x17,x0,0x00000022       103  addi   a7,zero,34         # display hex
+0x000030d4  0x00000073  ecall                        104  ecall                 # we are out of here.  
+0x000030d8  0x4044d493  srai x9,x9,4                 106  srai s1, s1, 4    
+0x000030dc  0x00900533  add x10,x0,x9                108  add    a0,zero,s1       #display s1
+0x000030e0  0x02200893  addi x17,x0,0x00000022       109  addi   a7,zero,34         # display hex
+0x000030e4  0x00000073  ecall                        110  ecall                 # we are out of here.  
+0x000030e8  0x4044d493  srai x9,x9,4                 112  srai s1, s1, 4    
+0x000030ec  0x00900533  add x10,x0,x9                114  add    a0,zero,s1       #display s1
+0x000030f0  0x02200893  addi x17,x0,0x00000022       115  addi   a7,zero,34         # display hex
+0x000030f4  0x00000073  ecall                        116  ecall                 # we are out of here.  
+0x000030f8  0x4044d493  srai x9,x9,4                 119  srai s1, s1, 4    
+0x000030fc  0x00900533  add x10,x0,x9                121  add    a0,zero,s1       #display s1
+0x00003100  0x02200893  addi x17,x0,0x00000022       122  addi   a7,zero,34         # display hex
+0x00003104  0x00000073  ecall                        123  ecall                 # we are out of here.  
+0x00003108  0x4044d493  srai x9,x9,4                 126  srai s1, s1, 4    
+0x0000310c  0x00900533  add x10,x0,x9                128  add    a0,zero,s1       #display s1
+0x00003110  0x02200893  addi x17,x0,0x00000022       129  addi   a7,zero,34         # display hex
+0x00003114  0x00000073  ecall                        130  ecall                 # we are out of here.  
+0x00003118  0x4044d493  srai x9,x9,4                 133  srai s1, s1, 4    
+0x0000311c  0x00900533  add x10,x0,x9                136  add    a0,zero,s1       #display s1
+0x00003120  0x02200893  addi x17,x0,0x00000022       137  addi   a7,zero,34         # display hex
+0x00003124  0x00000073  ecall                        138  ecall                 # we are out of here.    
+0x00003128  0x00100413  addi x8,x0,1                 145  addi s0,zero,1 
+0x0000312c  0x01f41993  slli x19,x8,31               146  slli s3, s0, 31      # s3=0x80000000
+0x00003130  0x41f9d993  srai x19,x19,31              147  srai s3, s3, 31      # s3=0xFFFFFFFF   
+0x00003134  0x00000433  add x8,x0,x0                 148  add s0,zero,zero   # s0=0         
+0x00003138  0x00c00913  addi x18,x0,12               149  addi s2,zero,12 
+0x0000313c  0x00300b13  addi x22,x0,3                151  addi s6,zero,3  #����Ƽ���
+0x00003140  0x00140413  addi x8,x8,1                 154  addi s0, s0, 1    #������һ������Ƶ�����
+0x00003144  0x00f47413  andi x8,x8,15                155  andi s0, s0, 15  
+0x00003148  0x00800293  addi x5,x0,8                 158  addi t0,zero,8    
+0x0000314c  0x00100313  addi x6,x0,1                 159  addi t1,zero,1
+0x00003150  0x00499993  slli x19,x19,4               162  slli s3, s3, 4   #���������
+0x00003154  0x0089e9b3  or x19,x19,x8                163  or s3, s3, s0
+0x00003158  0x01300533  add x10,x0,x19               165  add    a0,zero,s3       # display s3
+0x0000315c  0x02200893  addi x17,x0,0x00000022       166  addi   a7,zero,34         # system call for LED display 
+0x00003160  0x00000073  ecall                        167  ecall                 # display 
+0x00003164  0x406282b3  sub x5,x5,x6                 169  sub t0,t0,t1
+0x00003168  0xfe0294e3  bne x5,x0,0xffffffe8         170  bne t0,zero,left
+0x0000316c  0x00140413  addi x8,x8,1                 173  addi s0, s0, 1   #������һ������Ƶ�����
+0x00003170  0x00f00f93  addi x31,x0,15               174  addi t6,zero,15
+0x00003174  0x01f47433  and x8,x8,x31                175  and s0, s0, t6
+0x00003178  0x01c41413  slli x8,x8,28                176  slli s0, s0, 28     
+0x0000317c  0x00800293  addi x5,x0,8                 178  addi t0,zero,8
+0x00003180  0x00100313  addi x6,x0,1                 179  addi t1,zero,1
+0x00003184  0x0049d993  srli x19,x19,4               183  srli s3, s3, 4  #���������
+0x00003188  0x0089e9b3  or x19,x19,x8                184  or s3, s3, s0
+0x0000318c  0x01300533  add x10,x0,x19               186  add    a0,zero,s3       # display s3
+0x00003190  0x02200893  addi x17,x0,0x00000022       187  addi   a7,zero,34         # system call for LED display 
+0x00003194  0x00000073  ecall                        188  ecall                 # display 
+0x00003198  0x406282b3  sub x5,x5,x6                 190  sub t0,t0,t1
+0x0000319c  0xfe0294e3  bne x5,x0,0xffffffe8         191  bne t0,zero,zmd_right
+0x000031a0  0x01c45413  srli x8,x8,28                192  srli s0, s0, 28  
+0x000031a4  0x406b0b33  sub x22,x22,x6               195  sub s6,s6,t1
+0x000031a8  0x000b0463  beq x22,x0,0x00000008        196  beq s6,zero, exit
+0x000031ac  0xf95ff06f  jal x0,0xffffff94            197  j zmd_loop
+0x000031b0  0x000002b3  add x5,x0,x0                 201  add t0,zero,zero
+0x000031b4  0xfff2c293  xori x5,x5,0xffffffff        202  xori t0,t0,-1      #test r  xori
+0x000031b8  0x00829293  slli x5,x5,8                 203  slli t0,t0,8
+0x000031bc  0x0ff2e293  ori x5,x5,0x000000ff         204  ori t0,t0,255
+0x000031c0  0x00500533  add x10,x0,x5                206  add   a0,zero,t0       # display t0
+0x000031c4  0x02200893  addi x17,x0,0x00000022       207  addi   a7,zero,34         # system call for LED display 
+0x000031c8  0x00000073  ecall                        208  ecall                 # display 
+0x000031cc  0xfff00413  addi x8,x0,0xffffffff        216   addi s0,zero,-1
+0x000031d0  0x00000493  addi x9,x0,0                 217   addi s1,zero,0
+0x000031d4  0x0084a023  sw x8,0(x9)                  219   sw s0,0(s1)
+0x000031d8  0x00140413  addi x8,x8,1                 220   addi s0,s0,1
+0x000031dc  0x00448493  addi x9,x9,4                 221   addi s1,s1,4
+0x000031e0  0x0084a023  sw x8,0(x9)                  222   sw s0,0(s1)
+0x000031e4  0x00140413  addi x8,x8,1                 223   addi s0,s0,1
+0x000031e8  0x00448493  addi x9,x9,4                 224   addi s1,s1,4
+0x000031ec  0x0084a023  sw x8,0(x9)                  225   sw s0,0(s1)
+0x000031f0  0x00140413  addi x8,x8,1                 226   addi s0,s0,1
+0x000031f4  0x00448493  addi x9,x9,4                 227   addi s1,s1,4
+0x000031f8  0x0084a023  sw x8,0(x9)                  228   sw s0,0(s1)
+0x000031fc  0x00140413  addi x8,x8,1                 229   addi s0,s0,1
+0x00003200  0x00448493  addi x9,x9,4                 230   addi s1,s1,4
+0x00003204  0x0084a023  sw x8,0(x9)                  231   sw s0,0(s1)
+0x00003208  0x00140413  addi x8,x8,1                 232   addi s0,s0,1
+0x0000320c  0x00448493  addi x9,x9,4                 233   addi s1,s1,4
+0x00003210  0x0084a023  sw x8,0(x9)                  234   sw s0,0(s1)
+0x00003214  0x00140413  addi x8,x8,1                 235   addi s0,s0,1
+0x00003218  0x00448493  addi x9,x9,4                 236   addi s1,s1,4
+0x0000321c  0x0084a023  sw x8,0(x9)                  237   sw s0,0(s1)
+0x00003220  0x00140413  addi x8,x8,1                 238   addi s0,s0,1
+0x00003224  0x00448493  addi x9,x9,4                 239   addi s1,s1,4
+0x00003228  0x0084a023  sw x8,0(x9)                  240   sw s0,0(s1)
+0x0000322c  0x00140413  addi x8,x8,1                 241   addi s0,s0,1
+0x00003230  0x00448493  addi x9,x9,4                 242   addi s1,s1,4
+0x00003234  0x0084a023  sw x8,0(x9)                  243    sw s0,0(s1)
+0x00003238  0x00140413  addi x8,x8,1                 244   addi s0,s0,1
+0x0000323c  0x00448493  addi x9,x9,4                 245   addi s1,s1,4
+0x00003240  0x0084a023  sw x8,0(x9)                  246    sw s0,0(s1)
+0x00003244  0x00140413  addi x8,x8,1                 247   addi s0,s0,1
+0x00003248  0x00448493  addi x9,x9,4                 248   addi s1,s1,4
+0x0000324c  0x0084a023  sw x8,0(x9)                  249   sw s0,0(s1)
+0x00003250  0x00140413  addi x8,x8,1                 250   addi s0,s0,1
+0x00003254  0x00448493  addi x9,x9,4                 251   addi s1,s1,4
+0x00003258  0x0084a023  sw x8,0(x9)                  252    sw s0,0(s1)
+0x0000325c  0x00140413  addi x8,x8,1                 253   addi s0,s0,1
+0x00003260  0x00448493  addi x9,x9,4                 254   addi s1,s1,4
+0x00003264  0x0084a023  sw x8,0(x9)                  255    sw s0,0(s1)
+0x00003268  0x00140413  addi x8,x8,1                 256   addi s0,s0,1
+0x0000326c  0x00448493  addi x9,x9,4                 257   addi s1,s1,4
+0x00003270  0x0084a023  sw x8,0(x9)                  258    sw s0,0(s1)
+0x00003274  0x00140413  addi x8,x8,1                 259   addi s0,s0,1
+0x00003278  0x00448493  addi x9,x9,4                 260   addi s1,s1,4
+0x0000327c  0x0084a023  sw x8,0(x9)                  261    sw s0,0(s1)
+0x00003280  0x00140413  addi x8,x8,1                 262   addi s0,s0,1
+0x00003284  0x00448493  addi x9,x9,4                 263   addi s1,s1,4
+0x00003288  0x0084a023  sw x8,0(x9)                  264      sw s0,0(s1)
+0x0000328c  0x00140413  addi x8,x8,1                 265   addi s0,s0,1
+0x00003290  0x00448493  addi x9,x9,4                 266   addi s1,s1,4
+0x00003294  0x00140413  addi x8,x8,1                 268   addi s0,s0,1
+0x00003298  0x00000433  add x8,x0,x0                 270   add s0,zero,zero   
+0x0000329c  0x03c00493  addi x9,x0,0x0000003c        271   addi s1,zero,60   #��������
+0x000032a0  0x00042983  lw x19,0(x8)                 273   lw s3,0(s0)     
+0x000032a4  0x0004aa03  lw x20,0(x9)                 274   lw s4,0(s1)
+0x000032a8  0x0149a2b3  slt x5,x19,x20               275   slt t0,s3,s4
+0x000032ac  0x00028663  beq x5,x0,0x0000000c         276   beq t0,zero,sort_next   #��������
+0x000032b0  0x0134a023  sw x19,0(x9)                 277   sw s3, 0(s1)
+0x000032b4  0x01442023  sw x20,0(x8)                 278   sw s4, 0(s0)   
+0x000032b8  0xffc48493  addi x9,x9,0xfffffffc        280   addi s1, s1, -4   
+0x000032bc  0xfe9412e3  bne x8,x9,0xffffffe4         281   bne s0, s1, sort_loop  
+0x000032c0  0x00800533  add x10,x0,x8                283   add    a0,zero,s0       #display s0
+0x000032c4  0x02200893  addi x17,x0,0x00000022       284   addi   a7,zero,34         # display hex
+0x000032c8  0x00000073  ecall                        285   ecall                 # we are out of here.  DISP: disp r0, 0
+0x000032cc  0x00440413  addi x8,x8,4                 287   addi s0,s0,4
+0x000032d0  0x03c00493  addi x9,x0,0x0000003c        288   addi s1,zero,60
+0x000032d4  0xfc9416e3  bne x8,x9,0xffffffcc         289   bne s0, s1, sort_loop
+0x000032d8  0x00a00893  addi x17,x0,10               291   addi   a7,zero,10         # system call for exit
+0x000032dc  0x00000073  ecall                        292   ecall                  # we are out of here.   
+0x000032e0  0x00200293  addi x5,x0,2                 304  addi t0,zero,2    #sll ��λ����
+0x000032e4  0x01100493  addi x9,x0,17                305  addi s1,zero,  0x11
+0x000032e8  0x00849493  slli x9,x9,8                 306  slli s1,s1,8
+0x000032ec  0x01148493  addi x9,x9,17                307  addi s1,s1,0x11
+0x000032f0  0x00900533  add x10,x0,x9                309  add a0,zero,s1           
+0x000032f4  0x02200893  addi x17,x0,0x00000022       310  addi a7,zero,34         # system call for print
+0x000032f8  0x00000073  ecall                        311  ecall                  # print
+0x000032fc  0x02000e13  addi x28,x0,0x00000020       313  addi t3,zero,32  #ѭ������
+0x00003300  0x025484b3  mul x9,x9,x5                 315  mul s1,s1,t0     #����ָ��
+0x00003304  0x00900533  add x10,x0,x9                317  add a0,zero,s1          
+0x00003308  0x02200893  addi x17,x0,0x00000022       318  addi a7,zero,34         # system call for print
+0x0000330c  0x00000073  ecall                        319  ecall                  # print
+0x00003310  0xfffe0e13  addi x28,x28,0xffffffff      320  addi t3,t3, -1    
+0x00003314  0xfe0e16e3  bne x28,x0,0xffffffec        321  bne t3,zero,mul_branch   #ѭ��8��
+0x00003318  0x00a00893  addi x17,x0,10               323  addi   a7,zero,10         # system call for exit
+0x0000331c  0x00000073  ecall                        324  ecall                  # we are out of here.   
+0x00003320  0x08800493  addi x9,x0,0x00000088        333  addi s1,x0,0x88
+0x00003324  0x00849493  slli x9,x9,8                 334  slli s1,s1,8
+0x00003328  0x04848493  addi x9,x9,0x00000048        335  addi s1,s1,0x48
+0x0000332c  0x08700913  addi x18,x0,0x00000087       336  addi s2,x0,0x87
+0x00003330  0x00891913  slli x18,x18,8               337  slli s2,s2,8
+0x00003334  0x05490913  addi x18,x18,0x00000054      338  addi s2,s2,0x54
+0x00003338  0x02997933  remu x18,x18,x9              339  remu s2,s2,s1
+0x0000333c  0x01091913  slli x18,x18,16              340  slli s2,s2,16
+0x00003340  0x11096913  ori x18,x18,0x00000110       341  ori s2,s2,0x110
+0x00003344  0x01200533  add x10,x0,x18               344  add a0,zero,s2
+0x00003348  0x02200893  addi x17,x0,0x00000022       345  addi a7,zero,34         # system call for print
+0x0000334c  0x00000073  ecall                        346  ecall         
+0x00003350  0x00a00893  addi x17,x0,10               349  addi   a7,zero,10         # system call for exit
+0x00003354  0x00000073  ecall                        350  ecall                  # we are out of here.   
+0x00003358  0x00000313  addi x6,x0,0                 360  addi t1,zero,0     #init_addr 
+0x0000335c  0x01000e13  addi x28,x0,16               361  addi t3,zero,16     #counter
+0x00003360  0x08400493  addi x9,x0,0x00000084        364  addi s1,zero,  0x84
+0x00003364  0x00849493  slli x9,x9,8                 365  slli s1,s1,8
+0x00003368  0x08348493  addi x9,x9,0x00000083        366  addi s1,s1,0x83 
+0x0000336c  0x00400913  addi x18,x0,4                367  addi s2,zero,  0x04
+0x00003370  0x00891913  slli x18,x18,8               368  slli s2,s2,8
+0x00003374  0x00490913  addi x18,x18,4               369  addi s2,s2,0x04
+0x00003378  0x00849493  slli x9,x9,8                 370  slli s1,s1,8
+0x0000337c  0x08248493  addi x9,x9,0x00000082        371  addi s1,s1,0x82 
+0x00003380  0x00849493  slli x9,x9,8                 372  slli s1,s1,8
+0x00003384  0x08148493  addi x9,x9,0x00000081        373  addi s1,s1,0x81
+0x00003388  0x00891913  slli x18,x18,8               374  slli s2,s2,8
+0x0000338c  0x00490913  addi x18,x18,4               375  addi s2,s2,0x04
+0x00003390  0x00891913  slli x18,x18,8               376  slli s2,s2,8
+0x00003394  0x00490913  addi x18,x18,4               377  addi s2,s2,0x04    #    init_data= 0x84838281 next_data=init_data+ 0x04040404
+0x00003398  0x00932023  sw x9,0(x6)                  382  sw s1,(t1)
+0x0000339c  0x012484b3  add x9,x9,x18                383  add s1,s1,s2   #data +1
+0x000033a0  0x00430313  addi x6,x6,4                 384  addi t1,t1,4    # addr +4  
+0x000033a4  0xfffe0e13  addi x28,x28,0xffffffff      385  addi t3,t3,-1   #counter
+0x000033a8  0xfe0e18e3  bne x28,x0,0xfffffff0        386  bne t3,zero,lbu_store
+0x000033ac  0x02000e13  addi x28,x0,0x00000020       388  addi t3,zero,32
+0x000033b0  0x00000313  addi x6,x0,0                 389  addi t1,zero,0    # addr +4  
+0x000033b4  0x00034483  lbu x9,0(x6)                 391  lbu s1,(t1)     #����ָ��
+0x000033b8  0x00900533  add x10,x0,x9                392  add a0,zero,s1          
+0x000033bc  0x02200893  addi x17,x0,0x00000022       393  addi a7,zero,34         
+0x000033c0  0x00000073  ecall                        394  ecall                  # ���
+0x000033c4  0x00130313  addi x6,x6,1                 395  addi t1,t1, 1    
+0x000033c8  0xfffe0e13  addi x28,x28,0xffffffff      396  addi t3,t3, -1    
+0x000033cc  0xfe0e14e3  bne x28,x0,0xffffffe8        397  bne t3,zero,lbu_branch
+0x000033d0  0x00a00893  addi x17,x0,10               399  addi   a7,zero,10         # system call for exit
+0x000033d4  0x00000073  ecall                        400  ecall                  # we are out of here.   
+0x000033d8  0xff100493  addi x9,x0,0xfffffff1        411  addi s1,zero,-15       #��ʼֵ
+0x000033dc  0x00900533  add x10,x0,x9                413  add a0,zero,s1          
+0x000033e0  0x02200893  addi x17,x0,0x00000022       414  addi a7,zero,34         
+0x000033e4  0x00000073  ecall                        415  ecall                  #�����ǰֵ
+0x000033e8  0x00148493  addi x9,x9,1                 416  addi s1,s1,1  
+0x000033ec  0xfe9068e3  bltu x0,x9,0xfffffff0        417  bltu zero,s1,bltu_branch   
+0x000033f0  0x00900533  add x10,x0,x9                418  add a0,zero,s1          
+0x000033f4  0x02200893  addi x17,x0,0x00000022       419  addi a7,zero,34         
+0x000033f8  0x00000073  ecall                        420  ecall                  #�����ǰֵ
+0x000033fc  0x00a00893  addi x17,x0,10               422  addi   a7,zero,10         
+0x00003400  0x00000073  ecall                        423  ecall                  # ��ͣ���˳�
+0x00003404  0x00000413  addi x8,x0,0                 430  jmp_count: addi s0,zero, 0
+0x00003408  0x00140413  addi x8,x8,1                 431         addi s0,s0, 1
+0x0000340c  0x00800533  add x10,x0,x8                432         add    a0,zero,s0      
+0x00003410  0x02200893  addi x17,x0,0x00000022       433         addi   a7,zero,34         # display hex
+0x00003414  0x00000073  ecall                        434         ecall                 # we are out of here.  
+0x00003418  0x00240413  addi x8,x8,2                 436         addi s0,s0, 2
+0x0000341c  0x00800533  add x10,x0,x8                437         add    a0,zero,s0      
+0x00003420  0x02200893  addi x17,x0,0x00000022       438         addi   a7,zero,34         # display hex
+0x00003424  0x00000073  ecall                        439         ecall                 # we are out of here.  
+0x00003428  0x00340413  addi x8,x8,3                 441         addi s0,s0, 3
+0x0000342c  0x00800533  add x10,x0,x8                442         add    a0,zero,s0      
+0x00003430  0x02200893  addi x17,x0,0x00000022       443         addi   a7,zero,34         # display hex
+0x00003434  0x00000073  ecall                        444         ecall                 # we are out of here.  
+0x00003438  0x00440413  addi x8,x8,4                 446         addi s0,s0, 4       
+0x0000343c  0x00800533  add x10,x0,x8                447         add    a0,zero,s0      
+0x00003440  0x02200893  addi x17,x0,0x00000022       448         addi   a7,zero,34         # display hex
+0x00003444  0x00000073  ecall                        449         ecall                 # we are out of here.  
+0x00003448  0x00540413  addi x8,x8,5                 451         addi s0,s0, 5              
+0x0000344c  0x00800533  add x10,x0,x8                452         add    a0,zero,s0      
+0x00003450  0x02200893  addi x17,x0,0x00000022       453         addi   a7,zero,34         # display hex
+0x00003454  0x00000073  ecall                        454         ecall                 # we are out of here.  
+0x00003458  0x00640413  addi x8,x8,6                 456         addi s0,s0, 6              
+0x0000345c  0x00800533  add x10,x0,x8                457         add    a0,zero,s0      
+0x00003460  0x02200893  addi x17,x0,0x00000022       458         addi   a7,zero,34         # display hex
+0x00003464  0x00000073  ecall                        459         ecall                 # we are out of here.  
+0x00003468  0x00740413  addi x8,x8,7                 461         addi s0,s0, 7              
+0x0000346c  0x00800533  add x10,x0,x8                462         add    a0,zero,s0      
+0x00003470  0x02200893  addi x17,x0,0x00000022       463         addi   a7,zero,34         # display hex
+0x00003474  0x00000073  ecall                        464         ecall                 # we are out of here.  
+0x00003478  0x00840413  addi x8,x8,8                 466         addi s0,s0, 8              
+0x0000347c  0x00800533  add x10,x0,x8                467         add    a0,zero,s0      
+0x00003480  0x02200893  addi x17,x0,0x00000022       468         addi   a7,zero,34         # display hex
+0x00003484  0x02200893  addi x17,x0,0x00000022       469         addi   a7,zero,34         # display hex       
+0x00003488  0x00000073  ecall                        470         ecall                 # we are out of here.  
+0x0000348c  0x00008067  jalr x0,x1,0                 472         ret  #persudo instruction  jalr x0,x1,0
