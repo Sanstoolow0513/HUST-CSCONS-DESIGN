@@ -297,130 +297,19 @@ sort_next:
 
 #j benchmark_start       #delete this instruction for ccmb bencmark
 #C1 instruction benchmark
-#MUL乘法测试  1111*2*2*2......  revise date:2021/1/24 tiger
-#依次输出  0x00001111 0x00002222 0x00004444 0x00008888 0x00011110 0x00022220 0x00044440 0x00088880 0x00111100 0x00222200 0x00444400 0x00888800 0x01111000 0x02222000 0x04444000 0x08888000 0x11110000 0x22220000 0x44440000 0x88880000 0x11100000 0x22200000 0x44400000 0x88800000 0x11000000 0x22000000 0x44000000 0x88000000 0x10000000 0x20000000 0x40000000 0x80000000 0x00000000
-.text
-
-addi t0,zero,2    #sll 移位次数
-addi s1,zero,  0x11
-slli s1,s1,8
-addi s1,s1,0x11
-
-add a0,zero,s1           
-addi a7,zero,34         # system call for print
-ecall                  # print
-
-addi t3,zero,32  #循环次数
-mul_branch:
-mul s1,s1,t0     #测试指令
-
-add a0,zero,s1          
-addi a7,zero,34         # system call for print
-ecall                  # print
-addi t3,t3, -1    
-bne t3,zero,mul_branch   #循环8次
-
-addi   a7,zero,10         # system call for exit
-ecall                  # we are out of here.   
 
 
 
 #C2 instruction benchmark
-#REMU测试    revise date:2021/1/24 tiger
-#输出 0x87540110
-
-.text
-addi s1,x0,0x88
-slli s1,s1,8
-addi s1,s1,0x48
-addi s2,x0,0x87
-slli s2,s2,8
-addi s2,s2,0x54
-remu s2,s2,s1
-slli s2,s2,16
-ori s2,s2,0x110
-
-
-add a0,zero,s2
-addi a7,zero,34         # system call for print
-ecall         
-          
-                                    # print
-addi   a7,zero,10         # system call for exit
-ecall                  # we are out of here.   
-
 
 
 
 #Mem instruction benchmark
-#LBU 测试   revise date:2021/1/24 tiger
-#依次输出   0x00000081 0x00000082 0x00000083 0x00000084 0x00000085 0x00000086 0x00000087 0x00000088 0x00000089 0x0000008a 0x0000008b 0x0000008c 0x0000008d 0x0000008e 0x0000008f 0x00000090 0x00000091 0x00000092 0x00000093 0x00000094 0x00000095 0x00000096 0x00000097 0x00000098 0x00000099 0x0000009a 0x0000009b 0x0000009c 0x0000009d 0x0000009e 0x0000009f 0x000000a0
-.text
-
-addi t1,zero,0     #init_addr 
-addi t3,zero,16     #counter
-
-#预先写入数据，实际是按字节顺序存入 0x81,82,84,86,87,88,89.......等差数列
-addi s1,zero,  0x84
-slli s1,s1,8
-addi s1,s1,0x83 
-addi s2,zero,  0x04
-slli s2,s2,8
-addi s2,s2,0x04
-slli s1,s1,8
-addi s1,s1,0x82 
-slli s1,s1,8
-addi s1,s1,0x81
-slli s2,s2,8
-addi s2,s2,0x04
-slli s2,s2,8
-addi s2,s2,0x04    #    init_data= 0x84838281 next_data=init_data+ 0x04040404
-
-
-
-lbu_store:
-sw s1,(t1)
-add s1,s1,s2   #data +1
-addi t1,t1,4    # addr +4  
-addi t3,t3,-1   #counter
-bne t3,zero,lbu_store
-
-addi t3,zero,32
-addi t1,zero,0    # addr +4  
-lbu_branch:
-lbu s1,(t1)     #测试指令
-add a0,zero,s1          
-addi a7,zero,34         
-ecall                  # 输出
-addi t1,t1, 1    
-addi t3,t3, -1    
-bne t3,zero,lbu_branch
-
-addi   a7,zero,10         # system call for exit
-ecall                  # we are out of here.   
 
 
 
 
 #Branch instruction benchmark
-
-#bltu 测试    小于等于零跳转     累加运算，从负数开始向零运算  revise date:2022/1/24 tiger  
-#依次输出0xfffffff1 0xfffffff2 0xfffffff3 0xfffffff4 0xfffffff5 0xfffffff6 0xfffffff7 0xfffffff8 0xfffffff9 0xfffffffa 0xfffffffb 0xfffffffc 0xfffffffd 0xfffffffe 0xffffffff 0x00000000
-.text
-
-addi s1,zero,-15       #初始值
-bltu_branch:
-add a0,zero,s1          
-addi a7,zero,34         
-ecall                  #输出当前值
-addi s1,s1,1  
-bltu zero,s1,bltu_branch   
-add a0,zero,s1          
-addi a7,zero,34         
-ecall                  #输出当前值
-end:
-addi   a7,zero,10         
-ecall                  # 暂停或退出
 
 
 
